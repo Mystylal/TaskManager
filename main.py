@@ -10,7 +10,6 @@ def main() -> None:
         if choice == "1":
             task_data = ui.get_task_input()
             logic.add_task(tasks, task_data)
-            data.save_tasks(tasks)
 
         elif choice == "2":
             if not tasks:
@@ -26,7 +25,6 @@ def main() -> None:
                 ok = logic.change_status(tasks, task_id, new_status)
                 if not ok:
                     print("Не найдено")
-                data.save_tasks(tasks)
             except ValueError:
                 print("Неверный ввод")
 
@@ -34,9 +32,13 @@ def main() -> None:
             try:
                 task_id = int(input("ID задачи: "))
                 tasks = logic.delete_task(tasks, task_id)
-                data.save_tasks(tasks)
             except ValueError:
                 print("Неверный ввод")
+
+        elif choice == "q":
+            data.save_tasks(tasks)
+            print("Сохранено. Выход.")
+            break
 
         else:
             print("Нет такого пункта")

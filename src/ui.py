@@ -5,6 +5,7 @@ def show_menu() -> str:
     print("2. Показать задачи")
     print("3. Изменить статус")
     print("4. Удалить задачу")
+    print("q. Выход")
     return input("> ")
 
 def get_task_input() -> Dict:
