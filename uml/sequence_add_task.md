@@ -19,22 +19,3 @@
 7. **Data** записывает список задач в файл `tasks.json`  
 8. **UI** выводит сообщение «Задача добавлена»  
 
-## Текстовая схема PlantUML (если нужно визуализировать)
-```plantuml
-@startuml
-actor User
-participant UI
-participant Logic
-participant Data
-
-User -> UI: выбрать "Добавить задачу"
-UI -> User: запросить ввод (название, описание)
-User -> UI: ввод данных
-UI -> Logic: add_task(tasks, task_data)
-Logic -> Logic: создать ID и статус "новая"
-Logic -> Data: save_tasks(tasks)
-Data -> Data: записать tasks.json
-Data --> Logic: подтверждение
-Logic --> UI: задача добавлена
-UI --> User: показать "Задача добавлена"
-@enduml
